@@ -1,16 +1,20 @@
 # File is managed by Puppet
 
 <% case lsbdistcodename
-    when 'squeeze' %>
+    when 'wheezy' %>
+    deb http://packages.dotdeb.org wheezy all
+    deb-src http://packages.dotdeb.org wheezy all
+    
+    <% when 'squeeze' %>
     deb http://packages.dotdeb.org squeeze all
     deb-src http://packages.dotdeb.org squeeze all
-    
-    <% when 'lenny' %>
-    deb http://packages.dotdeb.org oldstable all
-    deb-src http://packages.dotdeb.org oldstable all
-    
-    <% if $dotdeb::lenny_php53 %>
-    deb http://php53.dotdeb.org oldstable all
-    deb-src http://php53.dotdeb.org oldstable all
+
+    <% if $dotdeb::squeeze_php54 %>
+    deb http://packages.dotdeb.org squeeze-php54 all
+    deb-src http://php53.dotdeb.org squeeze-php54 all
     <% end %>
+
+    <% when 'lenny' %>
+    deb http://archives.dotdeb.org lenny all
+    deb-src http://archives.dotdeb.org lenny all
 <% end %>
